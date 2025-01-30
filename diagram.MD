@@ -31,4 +31,4 @@ TaikoL1-->>Proposer: event BlockVerifiedV2
 Proposer->>+Proposer: logs the block was verified
 ```
 
-ChainSyncer, Proposer, and Prover are part of taiko-client, which is the consensus layer.
+ChainSyncer, Proposer, and Prover are part of taiko-client, which is the consensus client. Taiko-Geth is the execution client, and TaikoL1 (deployed on Ethereum) & TaikoL2 (deployed on Taiko) are smart contracts.
