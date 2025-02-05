@@ -6,12 +6,11 @@ participant TaikoL1
 
 
 Proposer->>+Proposer: Builds a block with pending transactions from Taiko's mempool.
-Proposer->>+TaikoL1: Propose the block
-TaikoL1->>+TaikoL1: Validate the proposed block
-Prover->>+TaikoL1: Submits proof for proposed block
-Prover->>+TaikoL1: Locks Taiko as a Bond for the proof
+Proposer->>+TaikoL1: Propose the block, and locks 125 TAIKO until block is proved
+Prover->>+TaikoL1: Submits proof for proposed block, and locks 25 TAIKO until block is verified
+TaikoL1-->>+Proposer: 125 TAIKO bond is returned
 Proposer->>+TaikoL1: Verifies the block.
-TaikoL1->>+Prover: Block is verified, bond of original prover is released
+TaikoL1-->>+Prover: 25 TAIKO bond is released
 ```
 
 Proposer and Prover are part of taiko-client, which is the consensus client. Taiko-Geth is the execution client, and TaikoL1 (deployed on Ethereum) is a smart contract.
