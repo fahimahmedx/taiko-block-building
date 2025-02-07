@@ -1,16 +1,17 @@
 ```mermaid
 sequenceDiagram
-participant Proposer
+participant Taiko Block Builder
 participant Prover
-participant TaikoL1
+participant Taiko Smart Contract on Ethereum
 
 
-Proposer->>+Proposer: 1. Builds a block with pending transactions from Taiko's mempool.
-Proposer->>+TaikoL1: 2. Propose the block, and locks 125 TAIKO until block is proved
-Prover->>+TaikoL1: 3. Submits proof for proposed block, and locks 25 TAIKO until block is verified
-TaikoL1-->>+Proposer: 4. 125 TAIKO bond is returned
-Proposer->>+TaikoL1: 5. Verifies the block.
-TaikoL1-->>+Prover: 6. 25 TAIKO bond is released
+Taiko Block Builder->>+Taiko Block Builder: 1. Builds a block with pending transactions from Taiko's mempool.
+Taiko Block Builder->>+Taiko Smart Contract on Ethereum: 2. Propose the block and select a prover for the block.
+Prover->>+Taiko Smart Contract on Ethereum: 3. Lock 125 TAIKO and build proof.
+Prover->>+Taiko Smart Contract on Ethereum: 4. Submits proof for proposed block, and locks 25 TAIKO until block is verified (proof can no longer be contested)
+Taiko Smart Contract on Ethereum-->>+Taiko Block Builder: 5. 125 TAIKO bond is returned for submitting proof
+Taiko Block Builder->>+Taiko Smart Contract on Ethereum: 6. Verifies the block.
+Taiko Smart Contract on Ethereum-->>+Prover: 7. 25 TAIKO bond is released
 ```
 
-Proposer and Prover are part of taiko-client, which is the consensus client. Taiko-Geth is the execution client, and TaikoL1 (deployed on Ethereum) is a smart contract.
+Taiko Block Builder (Proposer) and Prover are part of taiko-client, which is the consensus client. Taiko-Geth is the execution client, and TaikoL1 (deployed on Ethereum) is a smart contract.
