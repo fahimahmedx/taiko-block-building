@@ -13,5 +13,3 @@ Taiko Block Builder B->>+Taiko Smart Contract on Ethereum: 5. Propose its own bl
 Taiko Smart Contract on Ethereum-->>+Taiko Block Builder B: 6. Collects most of the transaction fees.
 Taiko Smart Contract on Ethereum-->>+Taiko Block Builder A: 7. Collects minimal transaction fees due to proposed transactions already being included.
 ```
-
-Taiko Block Builder (Proposer) and Prover are part of taiko-client, which is the consensus client. Taiko-Geth is the execution client, and TaikoL1 (deployed on Ethereum) is a smart contract.
