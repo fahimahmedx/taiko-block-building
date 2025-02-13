@@ -22,7 +22,7 @@ ChainSyncer->>+ChainSyncer: Insert anchor tx (used for syncing information betwe
 ChainSyncer->>+TaikoGeth: Create payload for the block and insert it into Taiko chain via Engine API
 TaikoGeth-->>+ChainSyncer: payload
 end
-ChainSyncer-->>+TaikoL2 Smart Contract: Block is now inserted into Taiko, anchor tx in block executes
+TaikoGeth->>+TaikoL2 Smart Contract: Block is now inserted into Taiko, anchor tx in block executes
 TaikoL2 Smart Contract->>+TaikoL2 Smart Contract: event AnchorV3
 note over TaikoGeth,TaikoL1 Smart Contract: Block Proving process. Waits for a BatchProposed event from the block building process.
 rect LightYellow
