@@ -16,7 +16,6 @@ Prover->>+TaikoL1 Smart Contract: Lock 125 Taiko Bond per Block
 TaikoL1 Smart Contract-->>+Prover: event BondDebited
 TaikoL1 Smart Contract->>+TaikoL1 Smart Contract: Validate Block Parameters and store batch onchain
 TaikoL1 Smart Contract-->>ChainSyncer: event BatchProposed
-TaikoL1 Smart Contract-->>Prover: event BatchProposed
 note over ChainSyncer,TaikoGeth: insertNewHead() to insert block into Taiko
 rect LightYellow
 ChainSyncer->>+ChainSyncer: Insert anchor tx to txList
